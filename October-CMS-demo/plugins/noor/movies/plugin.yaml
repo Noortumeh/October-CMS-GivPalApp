@@ -1,0 +1,11 @@
+plugin:
+    name: 'noor.movies::lang.plugin.name'
+    description: 'noor.movies::lang.plugin.description'
+    author: noor
+    icon: oc-icon-video-camera
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Movies
+        url: noor/movies/movies
+        icon: icon-video-camera

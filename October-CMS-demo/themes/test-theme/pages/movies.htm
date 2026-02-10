@@ -1,0 +1,16 @@
+##
+url = "/movies"
+layout = "default"
+title = "Movies"
+
+[builderList]
+modelClass = "Noor\Movies\Models\Movie"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "name"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+{% component 'builderList' %}

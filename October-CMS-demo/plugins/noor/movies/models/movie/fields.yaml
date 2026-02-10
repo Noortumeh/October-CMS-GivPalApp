@@ -1,0 +1,13 @@
+fields:
+    name:
+        label: 'Movie Title'
+        span: full
+        type: text
+    description:
+        label: 'Movie Description'
+        span: full
+        type: text
+    date:
+        label: 'Movie Date'
+        span: auto
+        type: text

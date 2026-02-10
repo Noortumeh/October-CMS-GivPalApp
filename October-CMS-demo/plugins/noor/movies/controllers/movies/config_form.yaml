@@ -1,0 +1,11 @@
+name: Movies
+modelClass: Noor\Movies\Models\Movie
+form: $/noor/movies/models/movie/fields.yaml
+defaultRedirect: noor/movies/movies
+create:
+    redirect: 'noor/movies/movies/update/:id'
+    redirectClose: noor/movies/movies
+update:
+    redirect: noor/movies/movies
+    redirectClose: noor/movies/movies
+preview: {  }

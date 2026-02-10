@@ -1,0 +1,23 @@
+url = "/"
+layout = "default"
+title = "Home Page"
+meta_title = "{{ aboutpage.title }}"
+
+[section aboutpage]
+handle = "Page\home"
+
+[resources]
+vars[activeNavLink] = "home"
+==
+{% put headerAfter %}
+    <div class="container">
+        <div class="header-extra text-center">
+            <h1 class="mb-4">Hello! This is October CMS!</h1>
+            <p class="lead">A company proving that making websites is not rocket science.</p>
+        </div>
+    </div>
+{% endput %}
+
+<main class="header-flush">
+    <h1>Hello World</h1>
+</main>
