@@ -11,3 +11,54 @@ fields:
         label: 'Movie Date'
         span: auto
         type: text
+    slug:
+        label: Slug
+        span: auto
+        preset:
+            field: name
+            type: slug
+        type: text
+    poster:
+        label: Poster
+        span: auto
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        imageWidth: '100'
+        imageHeight: '100'
+        type: fileupload
+    movie_gallery:
+        label: 'Movie Gallery'
+        span: auto
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        imageWidth: '80'
+        imageHeight: '80'
+        type: fileupload
+    genres:
+        label: Genres
+        nameFrom: genre_title
+        descriptionFrom: description
+        span: auto
+        type: relation
+    actors:
+        label: Actors
+        prompt: 'Add new item'
+        displayMode: accordion
+        span: auto
+        type: repeater
+        form:
+            fields:
+                actor_name:
+                    label: 'Actor Name'
+                    span: auto
+                    type: text
+                actor_age:
+                    label: 'Actor Age'
+                    span: auto
+                    type: text

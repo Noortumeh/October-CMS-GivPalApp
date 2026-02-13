@@ -3,3 +3,15 @@ v1.0.1:
 v1.0.2:
     - 'Created table noor_movies_'
     - builder_table_create_noor_movies_.php
+v1.0.3:
+    - 'Updated table noor_movies_'
+    - builder_table_update_noor_movies_.php
+v1.0.4:
+    - 'Created table noor_movies_genres'
+    - builder_table_create_noor_movies_genres.php
+v1.0.5:
+    - 'Created table noor_movies_movies_genres'
+    - builder_table_create_noor_movies_movies_genres.php
+v1.0.6:
+    - 'Updated table noor_movies_'
+    - builder_table_update_noor_movies__2.php

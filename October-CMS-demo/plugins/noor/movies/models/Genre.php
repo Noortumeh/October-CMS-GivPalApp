@@ -5,7 +5,7 @@ use Model;
 /**
  * Model
  */
-class Movie extends Model
+class Genre extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
@@ -18,7 +18,7 @@ class Movie extends Model
     /**
      * @var string table in the database used by the model.
      */
-    public $table = 'noor_movies_';
+    public $table = 'noor_movies_genres';
 
     /**
      * @var array rules for validation.
@@ -26,24 +26,15 @@ class Movie extends Model
     public $rules = [
     ];
 
-    protected $jsonable = ['actors'];
-
-    // Relations
+    // Relations:
+    //Reverse Relation to Movies
     public $belongsToMany = [
-        'genres' => [
-            'noor\Movies\Models\Genre',
+        'movies' => [
+            'noor\Movies\Models\Movie',
             'table' => 'noor_movies_movies_genres',
-            'order' => 'genre_title'
+            'order' => 'name'
 
         ]
-    ];
-
-    public $attachOne = [
-        'poster' => 'System\Models\File'
-    ];
-
-    public $attachMany = [
-        'movie_gallery' => 'System\Models\File'
     ];
 
 }
