@@ -40,8 +40,8 @@ notFoundMessage = "Record not found"
         {% if record.actors %}
             {% for actor in record.actors %}
                 <div style="padding: 10px; background-color: antiquewhite; border-radius: 10px; display: flex; justify-content: space-around; align-items: center; margin-bottom: 20px;">
-                    <h4 style="width: 50%;">Name: {{actor.actor_name}}</h4>
-                    <h4 style="width: 50%;">Age: {{actor.actor_age}}</h4>
+                    <h4 style="width: 50%;">First Name: {{actor.name}}</h4>
+                    <h4 style="width: 50%;">Last Name: {{actor.lastname}}</h4>
                 </div>
             {% endfor %}
         {% else %}

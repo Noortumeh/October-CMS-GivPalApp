@@ -18,3 +18,8 @@ navigation:
                 label: Genres
                 url: noor/movies/genres
                 icon: icon-tag
+            side-menu-item:
+                label: Actors
+                url: noor/movies/actors
+                icon: icon-user
+                iconSvg: ''

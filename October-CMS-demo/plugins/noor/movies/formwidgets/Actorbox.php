@@ -1,8 +1,8 @@
-<?php namespace Watchlearn\Movies\FormWidgets;
+<?php namespace Noor\Movies\FormWidgets;
 
 use Backend\Classes\FormWidgetBase;
 use Config;
-use Watchlearn\Movies\Models\Actor;
+use Noor\Movies\Models\Actor;
 
 
 class ActorBox extends FormWidgetBase
@@ -17,13 +17,13 @@ class ActorBox extends FormWidgetBase
 
     public function render(){
         $this->prepareVars();
-        //dump($this->vars['selectedValues']);
+        // dump($this->vars['actors']);
         return $this->makePartial('widget');
     }
 
     public function prepareVars(){
         $this->vars['id'] = $this->model->id;
-        // $this->vars['actors'] = Actor::all()->lists('full_name', 'id');
+        $this->vars['actors'] = Actor::all()->lists('full_name', 'id');
         $this->vars['name'] = $this->formField->getName().'[]';
         if(!empty($this->getLoadValue())){
             $this->vars['selectedValues'] = $this->getLoadValue();

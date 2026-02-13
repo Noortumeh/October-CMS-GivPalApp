@@ -32,6 +32,17 @@ class Plugin extends PluginBase
         ];
     }
 
+    // Register Custom Form Widgets
+    public function registerFormWidgets()
+    {
+        return [
+            'Noor\Movies\FormWidgets\Actorbox' => [
+                'label' => 'Actorbox field',
+                'code' => 'actorbox'
+            ]
+        ];  
+    }
+
     /**
      * registerSettings used by the backend.
      */
