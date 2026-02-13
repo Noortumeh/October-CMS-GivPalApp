@@ -1,0 +1,24 @@
+url = "/genres/:slug"
+layout = "default"
+title = "Genresw"
+
+[builderDetails genreDetails]
+modelClass = "Noor\Movies\Models\Genre"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "genre_title"
+notFoundMessage = "Genre Details not found"
+==
+{% set record = genreDetails.record %}
+{% if record %}
+    <div style="width: 80%; margin: auto;">
+        <h1>{{record.genre_title}}</h1>
+
+        {% for movie in record.movies %}
+            <h4>{{movie.name}}</h4>
+        {% endfor %}
+    </div>
+
+{% else %}
+    <p>{{ notFoundMessage }}</p>
+{% endif %}

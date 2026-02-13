@@ -8,4 +8,3 @@ create:
 update:
     redirect: noor/movies/movies
     redirectClose: noor/movies/movies
-preview: {  }
