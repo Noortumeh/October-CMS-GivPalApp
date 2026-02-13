@@ -26,15 +26,20 @@ class Movie extends Model
     public $rules = [
     ];
 
-    protected $jsonable = ['actors'];
+    // protected $jsonable = ['actors'];
 
     // Relations
+    // relation with pivot table (breack amny to many relation between movie and genre/ movie and actor)
     public $belongsToMany = [
         'genres' => [
             'noor\Movies\Models\Genre',
             'table' => 'noor_movies_movies_genres',
             'order' => 'genre_title'
-
+        ],
+        'actors' => [
+            'noor\Movies\Models\Actor',
+            'table' => 'noor_movies_actors_movies',
+            'order' => 'name'
         ]
     ];
 

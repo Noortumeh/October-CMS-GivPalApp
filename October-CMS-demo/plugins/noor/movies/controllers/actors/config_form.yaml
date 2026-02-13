@@ -1,0 +1,10 @@
+name: Actors
+form: $/noor/movies/models/actor/fields.yaml
+modelClass: Noor\Movies\Models\Actor
+defaultRedirect: noor/movies/actors
+create:
+    redirect: 'noor/movies/actors/update/:id'
+    redirectClose: noor/movies/actors
+update:
+    redirect: noor/movies/actors
+    redirectClose: noor/movies/actors
