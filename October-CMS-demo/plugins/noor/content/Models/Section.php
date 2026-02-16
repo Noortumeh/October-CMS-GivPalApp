@@ -13,6 +13,18 @@ class Section extends Model
 
     public $table = 'sections';
 
+    /**
+     * Relation declarations for October backend Form widgets
+     */
+    public $belongsTo = [
+        'parent' => [self::class, 'key' => 'parent_id'],
+    ];
+
+    public $hasMany = [
+        'children' => [self::class, 'key' => 'parent_id'],
+        'translations' => ['RainLab\\Translate\\Models\\Attribute', 'key' => 'model_id'],
+    ];
+
     public $implement = [TranslatableModel::class];
 
     public $translatable = [

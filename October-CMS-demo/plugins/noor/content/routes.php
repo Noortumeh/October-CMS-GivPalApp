@@ -3,5 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Noor\Content\Controllers\SectionController;
 
-
-Route::get('api/home-contents', [SectionController::class, 'homeContents']);
+Route::middleware('api')
+    ->prefix('api')
+    ->group(function () {
+        Route::get('home-contents', [SectionController::class, 'homeContents']);
+    });

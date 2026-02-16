@@ -34,7 +34,7 @@ class ContentResources extends JsonResource
 
             'title' => $modelData['title'] ?? $this->title,
             'subtitle' => $modelData['subtitle'] ?? $this->subtitle,
-            'description' => $modelData['description'] ?? $this->description,
+            'description' => strip_tags($modelData['description'] ?? $this->description),
             'address' => $modelData['address'] ?? $this->address,
             'date' => $modelData['date'] ?? $this->date,
 
