@@ -1,0 +1,17 @@
+columns:
+    id:
+        label: ID
+        searchable: true
+
+    section:
+        label: Section Key
+
+    type:
+        label: Type
+
+    order:
+        label: Order
+
+    active:
+        label: Active
+        type: switch

@@ -1,0 +1,16 @@
+plugin:
+    name: 'noor.content::lang.plugin.name'
+    description: 'noor.content::lang.plugin.description'
+    author: noor
+    icon: oc-icon-adjust
+    homepage: ''
+navigation:
+    content:
+        label: Content
+        url: noor/content/sections
+        icon: icon-copy
+        sideMenu:
+            sections:
+                label: Sections
+                url: noor/content/sections
+                icon: icon-list

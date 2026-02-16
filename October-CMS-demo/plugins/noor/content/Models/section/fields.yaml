@@ -1,0 +1,60 @@
+fields:
+    parent:
+        label: Parent
+        type: relation
+        nameFrom: section
+        emptyOption: -- No Parent --
+
+    section:
+        label: Section Key
+        type: text
+
+    type:
+        label: Type
+        type: text
+
+    file_path:
+        label: File
+        type: text
+
+    file_type:
+        label: File Type
+        type: text
+
+    order:
+        label: Order
+        type: number
+
+    items_count:
+        label: Items Count
+        type: number
+
+    active:
+        label: Active
+        type: switch
+
+    title:
+        label: Title
+        type: text
+        translatable: true
+
+    subtitle:
+        label: Subtitle
+        type: text
+        translatable: true
+
+    description:
+        label: Description
+        type: richeditor
+        size: large
+        translatable: true
+
+    address:
+        label: Address
+        type: text
+        translatable: true
+
+    date:
+        label: Date
+        type: text
+        translatable: true

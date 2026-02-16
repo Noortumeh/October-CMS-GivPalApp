@@ -1,9 +1,10 @@
 <?php namespace Backend;
 
 use Backend;
-use Backend\Models\{BrandSetting, UserRole};
-use October\Rain\Support\ModuleServiceProvider;
 use System\Classes\SettingsManager;
+use Backend\Models\UserRole;
+use Backend\Models\BrandSetting;
+use October\Rain\Support\ModuleServiceProvider;
 
 /**
  * ServiceProvider for Backend module
