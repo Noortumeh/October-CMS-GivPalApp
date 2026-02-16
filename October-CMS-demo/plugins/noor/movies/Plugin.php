@@ -3,7 +3,7 @@
 namespace Noor\Movies;
 
 use Backend\Facades\Backend;
-use Noor\Movies\Components\MovieDetails;
+use Noor\Movies\Components\{Actors, MovieDetails};
 use System\Classes\PluginBase;
 
 /**
@@ -28,7 +28,8 @@ class Plugin extends PluginBase
     {
         // id , name , dec , date
         return [
-            MovieDetails::class => 'movieDetails'
+            // MovieDetails::class => 'movieDetails',
+            'Noor\Movies\Components\Actors' => 'actors',
         ];
     }
 

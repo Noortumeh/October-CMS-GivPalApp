@@ -1,0 +1,6 @@
+plugin:
+    name: 'noor.api::lang.plugin.name'
+    description: 'noor.api::lang.plugin.description'
+    author: noor
+    icon: oc-icon-adjust
+    homepage: ''

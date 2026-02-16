@@ -197,12 +197,14 @@ class EditorSetting extends SettingModel
             'html_style_table_cell',
         ];
 
+        $value = $this->value;
+
         foreach ($styleFields as $field) {
-            if (is_array($this->value[$field] ?? null)) {
-                foreach ($this->value[$field] as $key => $row) {
+            if (is_array($value[$field] ?? null)) {
+                foreach ($value[$field] as $key => $row) {
                     if (isset($row['class_name'])) {
                         // Only allow valid CSS class characters: letters, digits, hyphens, underscores
-                        $this->value[$field][$key]['class_name'] = preg_replace(
+                        $value[$field][$key]['class_name'] = preg_replace(
                             '/[^a-zA-Z0-9_-]/',
                             '',
                             $row['class_name']
@@ -211,6 +213,8 @@ class EditorSetting extends SettingModel
                 }
             }
         }
+
+        $this->value = $value;
     }
 
     /**

@@ -8,6 +8,10 @@ handle = "Page\home"
 
 [resources]
 vars[activeNavLink] = "home"
+
+[actors]
+results = 3
+sortOrder = "name desc"
 ==
 {% put headerAfter %}
     <div class="container">
@@ -20,4 +24,5 @@ vars[activeNavLink] = "home"
 
 <main class="header-flush">
     <h1>Hello World</h1>
+    {% component 'actors' %}
 </main>
