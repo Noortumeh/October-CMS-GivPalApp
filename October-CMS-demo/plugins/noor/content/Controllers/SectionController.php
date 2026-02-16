@@ -20,10 +20,7 @@ class SectionController extends Controller
      */
     public function homeContents(Request $request)
     {
-        // $locale = $request->locale;
-        // return $locale;
         $sections = $this->sectionService->getHomeSections($request);
-        // echo(ContentResources::collection($sections));
         return ContentResources::collection($sections);
     }
 }

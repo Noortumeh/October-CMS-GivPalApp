@@ -31,6 +31,10 @@ class Plugin extends PluginBase
     public function register()
     {
          $this->app->register(\Noor\Content\Providers\ContentServiceProvider::class);
+         $this->app['router']->aliasMiddleware(
+        'setLocale',
+        \Noor\Content\Middleware\SetLocale::class
+    );
     }
 
     /**
