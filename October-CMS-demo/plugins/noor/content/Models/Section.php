@@ -25,6 +25,10 @@ class Section extends Model
         'translations' => ['RainLab\\Translate\\Models\\Attribute', 'key' => 'model_id'],
     ];
 
+    public $attachOne = [
+        'file' => ['System\Models\File']
+    ];
+
     public $implement = [TranslatableModel::class];
 
     public $translatable = [
@@ -61,7 +65,8 @@ class Section extends Model
         return $this->hasMany(self::class, 'parent_id')->orderBy('order');
     }
 
-    public function translations(){
+    public function translations()
+    {
         return $this->hasMany(Attribute::class, 'model_id');
     }
 
@@ -77,12 +82,12 @@ class Section extends Model
     {
         $array = parent::toArray();
         $locale = app()->getLocale();
-        
+
         if ($locale !== 'en' && $this->relationLoaded('translations')) {
             $translation = $this->translations
                 ->where('locale', $locale)
                 ->first();
-            
+
             if ($translation && $translation->attribute_data) {
                 $translatedData = json_decode($translation->attribute_data, true);
                 foreach ($this->translatable as $field) {
@@ -92,9 +97,9 @@ class Section extends Model
                 }
             }
         }
-        
+
         unset($array['translations']);
-        
+
         return $array;
     }
 }

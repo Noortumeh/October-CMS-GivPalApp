@@ -16,10 +16,6 @@ class SectionService
      */
     public function getHomeSections(Request $request)
     {
-        // $locale = $request?->locale;
-
-        // app()->setLocale($locale);
-
         $sections = Section::where('active', 1)
             ->whereNull('parent_id')
             ->orderBy('order')

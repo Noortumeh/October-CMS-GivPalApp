@@ -1,3 +1,6 @@
 v1.0.1:
     - First version of Content
     - builder_table_create_noor_sections.php
+    - Seed DataBase data
+    - DatabaseSectionsSeeder.php
+

@@ -13,13 +13,10 @@ fields:
         label: Type
         type: text
 
-    file_path:
-        label: File
-        type: text
-
-    file_type:
-        label: File Type
-        type: text
+    file:
+        label: Upload File
+        type: fileupload
+        mode: file
 
     order:
         label: Order

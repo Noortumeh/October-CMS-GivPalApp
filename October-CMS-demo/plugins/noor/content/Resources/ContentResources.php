@@ -38,8 +38,8 @@ class ContentResources extends JsonResource
             'address' => $modelData['address'] ?? $this->address,
             'date' => $modelData['date'] ?? $this->date,
 
-            'file_path' => $this->file_path,
-            'file_type' => $this->file_type,
+            'file_path' => $this->file ? $this->file->path : null,
+            'file_type' => $this->file ? explode('/', $this->file->content_type)[0] : null,
             'order' => $this->order,
 
             'children' => ContentResources::collection(

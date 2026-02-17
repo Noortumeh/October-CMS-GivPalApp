@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('section');
             $table->string('type');
             $table->string('file_path')->nullable();
-            $table->string('file_type')->nullable();
             $table->integer('order')->default(1);
             $table->integer('items_count')->nullable()->default(3);
             $table->text('title')->nullable();
