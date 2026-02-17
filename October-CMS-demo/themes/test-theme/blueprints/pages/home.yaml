@@ -1,0 +1,17 @@
+# uuid: 61d4ac1f-8a2c-4c88-8d4f-9c3e2b1a5f7e
+# handle: Page\home
+# type: single
+# name: Home Page
+# drafts: false
+
+# navigation:
+#     icon: icon-home
+#     order: 100
+
+# fields:
+#     title:
+#         label: Page Title
+#         type: text
+#     description:
+#         label: Description
+#         type: textarea
