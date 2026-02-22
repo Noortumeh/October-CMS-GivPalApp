@@ -99,7 +99,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | This configuration can be used to bypass CMS routing logic, such as the
-    | maintenance mode page and site definition prefix. The key matches a page
+    | maintenance mode page and site definition prefix. The  matches a page
     | URL match with support for wildcards. The following exception values can
     | be configured separated by the pipe character (|).
     |

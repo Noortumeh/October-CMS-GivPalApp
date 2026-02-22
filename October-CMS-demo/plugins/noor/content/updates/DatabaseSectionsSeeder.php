@@ -12,10 +12,12 @@ class DatabaseSectionsSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(NewsSeeder::class);
-        $this->call(MediaSeeder::class);
-        $this->call(ProjectsSeeder::class);
-        $this->call(ServiceSeeder::class);
-        $this->call(StatisticsSeeder::class);
+        $this->call([
+            NewsSeeder::class,
+            MediaSeeder::class,
+            ProjectsSeeder::class,
+            ServiceSeeder::class,
+            StatisticsSeeder::class,
+        ]);
     }
 }

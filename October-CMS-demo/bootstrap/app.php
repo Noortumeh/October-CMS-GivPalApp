@@ -10,7 +10,8 @@ return Application::configure(basePath: dirname(__DIR__))
         // commands: __DIR__.'/../routes/console.php',
         // health: '/up',
         api: [
-            __DIR__ . '/../plugins/noor/content/routes.php'
+            __DIR__ . '/../plugins/noor/content/routes.php',
+            __DIR__ . '/../plugins/flynsarmy/menu/routes.php',
         ],
     )
     ->withMiddleware(function (Middleware $middleware) {
