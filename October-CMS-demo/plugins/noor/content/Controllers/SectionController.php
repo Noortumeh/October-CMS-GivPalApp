@@ -21,6 +21,10 @@ class SectionController extends Controller
     public function homeContents(Request $request)
     {
         $sections = $this->sectionService->getHomeSections($request);
-        return ContentResources::collection($sections);
+        return response()->json([
+            'success' => true,
+            'message' => 'Sections retrieved successfully',
+            'data' => ContentResources::collection($sections)
+        ]);
     }
 }

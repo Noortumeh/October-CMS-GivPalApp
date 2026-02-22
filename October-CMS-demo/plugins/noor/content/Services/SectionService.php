@@ -4,22 +4,21 @@ namespace Noor\Content\Services;
 
 use Illuminate\Http\Request;
 use Noor\Content\Models\Section;
-// use Noor\Content\Resources\ContentResources;
 
 class SectionService
 {
     /**
      * Get all active sections with translations and children
      *
-     * @param string|null $locale
+     * @param Request $request
      * @return \Illuminate\Support\Collection
      */
-    public function getHomeSections(Request $request)
+    public function getHomeSections()
     {
         $sections = Section::where('active', 1)
             ->whereNull('parent_id')
             ->orderBy('order')
-            ->with(['translations', 'childrenRecursive'])
+            ->with(['childrenRecursive'])
             ->get();
 
         return $sections;
