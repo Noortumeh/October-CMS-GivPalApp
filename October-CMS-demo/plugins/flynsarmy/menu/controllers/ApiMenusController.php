@@ -3,8 +3,10 @@
 namespace Flynsarmy\Menu\Controllers;
 
 use Backend\Classes\Controller;
+use Exception;
 use Flynsarmy\Menu\Models\Menu;
 use Flynsarmy\Menu\Resources\LinksResources;
+use Lang;
 
 /**
  * Channels Back-end Controller
@@ -13,12 +15,20 @@ class ApiMenusController extends Controller
 {
     public function getLinks()
     {
-        $menus = Menu::with('items')->get();
+       try{
+         $menus = Menu::with('items')->get();
 
         return response()->json([
             'success' => true,
-            'message' => 'Menus retrieved successfully',
+            'message' => Lang::get('flynsarmy.menu::lang.menus_retrieved_successfully'),
             'data' => LinksResources::collection($menus)
         ]);
+       }catch(Exception $e){
+        return response()->json([
+            'success' => false,
+            'message' => $e->getMessage() ?? Lang::get('flynsarmy.menu::lang.server_error'),
+            'data' => null
+        ], 500);
+       }
     }
 }

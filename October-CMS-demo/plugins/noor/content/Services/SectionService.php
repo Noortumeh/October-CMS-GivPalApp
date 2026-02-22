@@ -2,7 +2,9 @@
 
 namespace Noor\Content\Services;
 
+use Exception;
 use Illuminate\Http\Request;
+use Lang;
 use Noor\Content\Models\Section;
 
 class SectionService
@@ -15,12 +17,20 @@ class SectionService
      */
     public function getHomeSections()
     {
-        $sections = Section::where('active', 1)
-            ->whereNull('parent_id')
-            ->orderBy('order')
-            ->with(['childrenRecursive'])
-            ->get();
+        try {
+            $sections = Section::where('active', 1)
+                ->whereNull('parent_id')
+                ->orderBy('order')
+                ->with(['childrenRecursive'])
+                ->get();
 
-        return $sections;
+            return $sections;
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage() ?? Lang::get('noor.content::lang.server_error'),
+                'data' => null
+            ], 500);
+        }
     }
 }
