@@ -50,7 +50,8 @@
     },
     "autoload": {
         "psr-4": {
-            "System\\Console\\": "modules/system/console"
+            "System\\Console\\": "modules/system/console",
+            "Noor\\Content\\": "plugins/noor/content/"
         }
     },
     "minimum-stability": "stable",
