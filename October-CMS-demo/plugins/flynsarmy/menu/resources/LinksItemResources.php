@@ -17,6 +17,10 @@ class LinksItemResources extends JsonResource
             'id_attrib' => $this->id_attrib,
             'class_attrib' => $this->class_attrib,
             'selected_item_id' => $this->selected_item_id,
+            'parent_id' => $this->parent_id,
+            'children' => LinksItemResources::collection(
+                $this->whenLoaded('childrenRecursive')
+            ),
         ];
     }
 }

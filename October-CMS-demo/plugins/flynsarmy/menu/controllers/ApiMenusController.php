@@ -16,7 +16,9 @@ class ApiMenusController extends Controller
     public function getLinks()
     {
        try{
-         $menus = Menu::with('items')->get();
+         $menus = Menu::with(['items' => function ($query){
+            $query->whereNull('parent_id')->with('childrenRecursive');
+         }])->get();
 
         return response()->json([
             'success' => true,

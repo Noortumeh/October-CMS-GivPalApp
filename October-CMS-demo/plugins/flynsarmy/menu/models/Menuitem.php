@@ -1,4 +1,6 @@
-<?php namespace Flynsarmy\Menu\Models;
+<?php
+
+namespace Flynsarmy\Menu\Models;
 
 use Model;
 use Cms\Classes\Controller;
@@ -36,7 +38,24 @@ class Menuitem extends Model
 
 	public $belongsTo = [
 		'menu' => ['Flynsarmy\Menu\Models\Menu'],
+		'parent' => [
+			'Flynsarmy\Menu\Models\Menuitem',
+			'key' => 'parent_id'
+		]
 	];
+
+	// nested tree items
+	public $hasMany = [
+		'children' => [
+			'Flynsarmy\Menu\Models\Menuitem',
+			'key' => 'parent_id'
+		]
+	];
+
+	public function childrenRecursive()
+	{
+		return $this->children()->with('childrenRecursive');
+	}
 
 	/**
 	 * @var array Validation rules
@@ -51,7 +70,7 @@ class Menuitem extends Model
 	 * @var array Translatable fields
 	 */
 	public $implement = [TranslatableModel::class];
-	
+
 	public $translatable = ['label']; //, 'title_attrib'
 
 	public $customMessages = [];
@@ -91,45 +110,44 @@ class Menuitem extends Model
 	 *
 	 * @return string
 	 */
-	public function getClassAttrib( array $settings, $depth )
+	public function getClassAttrib(array $settings, $depth)
 	{
-		if ( !empty($this->cache['classAttrib']) )
+		if (!empty($this->cache['classAttrib']))
 			return $this->cache['classAttrib'];
 
 		$classes = [];
-		if ( $this->class_attrib )
+		if ($this->class_attrib)
 			$classes = explode(' ', $this->class_attrib);
 
-		if ( is_int($depth) )
-			$classes[] = $settings['depth_prefix'].$depth;
+		if (is_int($depth))
+			$classes[] = $settings['depth_prefix'] . $depth;
 
-		if ( $this->getChildren()->count() )
+		if ($this->getChildren()->count())
 			$classes[] = $settings['has_children_class'];
 
-		if ( !empty($settings['selected_item']) && $settings['selected_item'] == $this->selected_item_id )
+		if (!empty($settings['selected_item']) && $settings['selected_item'] == $this->selected_item_id)
 			$classes[] = $settings['selected_item_class'];
 
 		return $this->cache['classAttrib'] = implode(' ', $classes);
 	}
 
-	public function render( Controller $controller, array $settings, $depth=0, $url, $child_count=0 )
+	public function render(Controller $controller, array $settings, $depth = 0, $url, $child_count = 0)
 	{
-		if ( !$this->enabled )
+		if (!$this->enabled)
 			return '';
 
 		// Support custom itemType-specific output
-		if ( class_exists($this->master_object_class) )
-		{
+		if (class_exists($this->master_object_class)) {
 			$itemTypeObj = new $this->master_object_class;
-			if ( $output = $itemTypeObj->onRender($this, $controller, $settings, $depth, $url, $child_count) )
+			if ($output = $itemTypeObj->onRender($this, $controller, $settings, $depth, $url, $child_count))
 				return $output;
 		}
 
-		return require __DIR__.'/../partials/_menuitem.php';
+		return require __DIR__ . '/../partials/_menuitem.php';
 	}
 
-	public function beforeCreate() 
-	{ 
-		$this->setDefaultLeftAndRight(); 
+	public function beforeCreate()
+	{
+		$this->setDefaultLeftAndRight();
 	}
 }

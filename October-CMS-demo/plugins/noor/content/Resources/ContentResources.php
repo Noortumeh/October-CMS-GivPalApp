@@ -16,7 +16,7 @@ class ContentResources extends JsonResource
 
             'title' => $this->title,
             'subtitle' => $this->subtitle,
-            'description' => $this->description,
+            'description' => strip_tags($this->description),
             'address' => $this->address,
             'date' => $this->date,
 
