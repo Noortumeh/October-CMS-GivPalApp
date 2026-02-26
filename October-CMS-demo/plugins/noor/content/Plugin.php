@@ -30,11 +30,16 @@ class Plugin extends PluginBase
      */
     public function register()
     {
-         $this->app->register(\Noor\Content\Providers\ContentServiceProvider::class);
-         $this->app['router']->aliasMiddleware(
-        'setLocale',
-        \Noor\Content\Middleware\SetLocale::class
-    );
+        $this->app->singleton(
+            \Noor\Content\Services\SectionService::class,
+            function ($app) {
+                return new \Noor\Content\Services\SectionService();
+            }
+        );
+        $this->app['router']->aliasMiddleware(
+            'setLocale',
+            \Noor\Content\Middleware\SetLocale::class
+        );
     }
 
     /**
