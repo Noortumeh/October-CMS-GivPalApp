@@ -26,7 +26,7 @@ class CreateMenuitemsTable extends Migration
 			$table->string('master_object_id')->default('');
 
 			// Nesting
-			$table->integer('parent_id')->default(0)->unsigned()->index();
+			$table->integer('parent_id')->default(0)->nullable()->unsigned()->index();
 			$table->integer('nest_left')->default(0);
 			$table->integer('nest_right')->default(0);
 			$table->integer('nest_depth')->default(0);
