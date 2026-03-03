@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Section
+
+# Model Form Field configuration
+form: $/noor/content/models/section/fields.yaml
+
+# Model Class name
+modelClass: Noor\Content\Models\Section
+
+# Default redirect location
+defaultRedirect: noor/content/sections
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: noor/content/sections/update/:id
+    redirectClose: noor/content/sections
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: noor/content/sections
+    redirectClose: noor/content/sections
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

@@ -1,0 +1,10 @@
+name: Genres
+form: $/noor/movies/models/genre/fields.yaml
+modelClass: Noor\Movies\Models\Genre
+defaultRedirect: noor/movies/genres
+create:
+    redirect: 'noor/movies/genres/update/:id'
+    redirectClose: noor/movies/genres
+update:
+    redirect: noor/movies/genres
+    redirectClose: noor/movies/genres

@@ -1,28 +1,14 @@
-<?php
-
-namespace Flynsarmy\Menu;
+<?php namespace Flynsarmy\Menu;
 
 use Backend;
-use Flynsarmy\Menu\Models\Menuitem;
-use System\Classes\{PluginBase, PluginManager};
+use System\Classes\PluginBase;
+use System\Classes\PluginManager;
 
 /**
  * Menus Plugin Information File
  */
 class Plugin extends PluginBase
 {
-
-	public function boot()
-	{
-		// Menuitem::extend(function ($model) {
-		// 	$model->implement[] = 'RainLab.Translate.Behaviors.TranslatableModel';
-
-		// 	$model->translatable = [
-		// 		'label',
-		// 	];
-		// });
-		// require __DIR__ . '/routes.php';
-	}
 
 	/**
 	 * Returns information about this plugin.
@@ -36,7 +22,7 @@ class Plugin extends PluginBase
 			'description' => 'Create flexible menus straight from October CMS admin',
 			'author'      => 'Flyn San',
 			'icon'        => 'icon-bars',
-			'homepage'    => 'https://github.com/Flynsarmy/oc-menu-plugin'
+            'homepage'    => 'https://github.com/Flynsarmy/oc-menu-plugin'
 		];
 	}
 
@@ -104,7 +90,8 @@ class Plugin extends PluginBase
 			],
 		];
 
-		if (PluginManager::instance()->hasPlugin('RainLab.Blog')) {
+		if ( PluginManager::instance()->hasPlugin('RainLab.Blog') )
+		{
 			$types['Flynsarmy\\Menu\\MenuItemTypes\\BlogPost'] = [
 				'label' => 'Blog Post',
 				'alias' => 'blog_post',
