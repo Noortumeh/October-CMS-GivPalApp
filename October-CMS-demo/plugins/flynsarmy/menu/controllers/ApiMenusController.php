@@ -2,11 +2,13 @@
 
 namespace Flynsarmy\Menu\Controllers;
 
+use App;
 use Backend\Classes\Controller;
 use Exception;
 use Flynsarmy\Menu\Models\Menu;
 use Flynsarmy\Menu\Resources\LinksResources;
 use Lang;
+use RainLab\Translate\Classes\Translator;
 
 /**
  * Channels Back-end Controller
@@ -15,20 +17,21 @@ class ApiMenusController extends Controller
 {
     public function getLinks()
     {
-       try{
-         $menus = Menu::with('items')->get();
+        try {
+            $menus = Menu::with(['items', 'translations'])->get();
+            // return $menus[0]->items[0]->label;
 
-        return response()->json([
-            'success' => true,
-            'message' => Lang::get('flynsarmy.menu::lang.menus_retrieved_successfully'),
-            'data' => LinksResources::collection($menus)
-        ]);
-       }catch(Exception $e){
-        return response()->json([
-            'success' => false,
-            'message' => $e->getMessage() ?? Lang::get('flynsarmy.menu::lang.server_error'),
-            'data' => null
-        ], 500);
-       }
+            return response()->json([
+                'success' => true,
+                'message' => Lang::get('flynsarmy.menu::lang.menus_retrieved_successfully'),
+                'data' => LinksResources::collection($menus)
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage() ?? Lang::get('flynsarmy.menu::lang.server_error'),
+                'data' => null
+            ], 500);
+        }
     }
 }

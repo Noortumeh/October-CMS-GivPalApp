@@ -14,6 +14,7 @@ class SetLocale
         $locale = $request->header('Accept-Language')
             ?? $request->locale
             ?? 'ar';
+        // $locale = 'ar'; // Force Arabic for now
         App::setLocale($locale);
         
         Translator::instance()->setLocale($locale);

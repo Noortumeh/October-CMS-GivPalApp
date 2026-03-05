@@ -19,6 +19,7 @@ tabs:
     label:
       label: Navigation Label
       tab: Item
+      translatable: true
 
     id_attrib:
       label: ID Attribute
@@ -46,3 +47,4 @@ tabs:
       label: Title Attribute
       span: right
       tab: Attributes
+      translatable: true

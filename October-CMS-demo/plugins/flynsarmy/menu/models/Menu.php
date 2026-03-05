@@ -2,13 +2,14 @@
 
 use Model;
 use Cms\Classes\Controller;
+// use RainLab\Translate\Behaviors\TranslatableModel;
 
 /**
  * Menu Model
  */
 class Menu extends Model
 {
-	use \October\Rain\Database\Traits\Validation;
+	// use \October\Rain\Database\Traits\Validation;
 
 	private $firstItem;
 
