@@ -3,6 +3,8 @@
 use Model;
 use Cms\Classes\Controller;
 use Flynsarmy\Menu\Models\Menu;
+use RainLab\Translate\Behaviors\TranslatableModel;
+
 
 //http://laravel.io/bin/XLN52#
 //http://octobercms.com/docs/database/model#deferred-binding
@@ -15,7 +17,7 @@ class Menuitem extends Model
 {
 	use \October\Rain\Database\Traits\Validation;
 	use \October\Rain\Database\Traits\NestedTree;
-
+	
 	/**
 	 * @var string The database table used by the model.
 	 */
@@ -49,6 +51,8 @@ class Menuitem extends Model
 	/**
 	 * @var array Translatable fields
 	 */
+	public $implement = [TranslatableModel::class];
+
 	public $translatable = ['label', 'title_attrib'];
 
 	public $customMessages = [];

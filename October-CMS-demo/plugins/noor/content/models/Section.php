@@ -9,21 +9,6 @@ class Section extends Model
 {
     public $table = 'sections';
 
-    /**
-     * Relation declarations for October backend Form widgets
-     */
-    public $belongsTo = [
-        'parent' => [self::class, 'key' => 'parent_id'],
-    ];
-
-    public $hasMany = [
-        'children' => [self::class, 'key' => 'parent_id'],
-    ];
-
-    public $attachOne = [
-        'file' => ['System\Models\File']
-    ];
-
     public $implement = [TranslatableModel::class];
 
     public $translatable = [
@@ -50,6 +35,22 @@ class Section extends Model
         'date'
     ];
 
+    /**
+     * Relation declarations for October backend Form widgets
+     */
+    public $belongsTo = [
+        'parent' => [self::class, 'key' => 'parent_id'],
+    ];
+
+    public $hasMany = [
+        'children' => [self::class, 'key' => 'parent_id'],
+    ];
+
+    public $attachOne = [
+        'file' => ['System\Models\File']
+    ];
+
+    //
     public function parent()
     {
         return $this->belongsTo(self::class, 'parent_id');
