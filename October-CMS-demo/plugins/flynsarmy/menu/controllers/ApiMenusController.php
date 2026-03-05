@@ -18,8 +18,7 @@ class ApiMenusController extends Controller
     public function getLinks()
     {
         try {
-            $menus = Menu::with(['items', 'translations'])->get();
-            // return $menus[0]->items[0]->label;
+            $menus = Menu::with(['items'])->get();
 
             return response()->json([
                 'success' => true,

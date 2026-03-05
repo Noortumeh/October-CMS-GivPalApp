@@ -25,16 +25,18 @@ class SetLocale
 
         // Determine the requested locale from header or query string
         $locale = $request->header('Accept-Language')
-            ?? $request->query('locale');
+            ?? $request->query('locale') ?? 'ar';
 
         if ($locale) {
             // setLocale() returns false if the locale is not registered in the DB
             $set = $translator->setLocale($locale);
+            app()->setLocale($locale);
 
             if (!$set) {
                 // Requested locale is not registered — fall back to default silently
                 $locale = $translator->getDefaultLocale();
                 $translator->setLocale($locale);
+                app()->setLocale($locale);
             }
         }
 
