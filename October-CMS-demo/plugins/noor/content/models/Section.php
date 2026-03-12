@@ -60,4 +60,33 @@ class Section extends Model
     {
         return $this->children()->with('childrenRecursive')->where('active', true);
     }
+
+    public function scopeSearch($query, $search)
+    {
+        if (!$search) {
+            return $query;
+        }
+
+        $locale = app()->getLocale();
+        $modelType = static::class;
+        
+        $like = '%' . $search . '%';
+
+        $query->where(function ($q) use ($like, $locale, $modelType) {
+            $q->orWhere('title', 'like', $like)
+              ->orWhere('subtitle', 'like', $like)
+              ->orWhere('description', 'like', $like)
+              ->orWhere('address', 'like', $like);
+
+            $q->orWhereIn('id', function ($sub) use ($like, $locale, $modelType) {
+                $sub->select('model_id')
+                    ->from('rainlab_translate_attributes')
+                    ->where('model_type', $modelType)
+                    ->where('locale', $locale)
+                    ->where('attribute_data', 'like', $like);
+            });
+        });
+
+        return $query;
+    }
 }

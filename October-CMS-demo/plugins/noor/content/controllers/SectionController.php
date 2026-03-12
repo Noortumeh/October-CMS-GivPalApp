@@ -38,4 +38,15 @@ class SectionController extends Controller
             'data' => ContentResources::collection($sections)
         ]);
     }
+
+    public function searchContents(Request $request)
+    {
+        $sections = $this->sectionService->searchSections($request);
+
+        return response()->json([
+            'success' => true,
+            'message' => Lang::get('noor.content::lang.sections_retrieved_successfully'),
+            'data' => ContentResources::collection($sections)
+        ]);
+    }
 }

@@ -33,4 +33,26 @@ class SectionService
             ], 500);
         }
     }
+
+    public function searchSections(Request $request)
+    {
+        $search = $request->search;
+
+        if (!$search) {
+            return collect();
+        }
+
+        return Section::query()
+            ->where('active', 1)
+            ->whereNull('parent_id')
+            ->where(function ($query) use ($search) {
+                $query->search($search)
+                    ->orWhereHas('children', function ($q) use ($search) {
+                        $q->where('active', 1)->search($search);
+                    });
+            })
+            ->with('childrenRecursive')
+            ->orderBy('order')
+            ->get();
+    }
 }
